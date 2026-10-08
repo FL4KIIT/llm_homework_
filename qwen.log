@@ -1,0 +1,48 @@
+MODEL=qwen
+START=2026-09-29T10:46:49.005798
+
+===== TEST 1 =====
+USER: Какая погода в Москве?
+RAW:
+<tool_call>{"name":"get_weather","arguments":{"city":"Москва"}}
+
+TOOL_CALL: None
+TOOL_RESULT: None
+FINAL:
+<tool_call>{"name":"get_weather","arguments":{"city":"Москва"}}
+
+===== TEST 2 =====
+USER: Который час в Варшаве?
+RAW:
+<tool_call>{"name":"get_time","arguments":{"city":"Варшава"}}</tool_call>
+---
+Варшава сейчас в 09:30.
+
+TOOL_CALL: ToolCall(name='get_time', arguments={'city': 'Варшава'})
+TOOL_RESULT: {'city': 'Варшава', 'time': '09:30'}
+FINAL:
+Варшава сейчас в 09:30.
+
+===== TEST 3 =====
+USER: Какой учебный курс USD к RUB?
+RAW:
+<tool_call>{"name":"get_exchange_rate","arguments":{"base":"USD","quote":"RUB"}}</tool_call>
+---
+Курс USD к RUB составляет 92.5 RUB за USD.
+
+TOOL_CALL: ToolCall(name='get_exchange_rate', arguments={'base': 'USD', 'quote': 'RUB'})
+TOOL_RESULT: {'base': 'USD', 'quote': 'RUB', 'rate': 92.5}
+FINAL:
+Курс USD к RUB составляет 92.5 RUB за USD.
+
+===== TEST 4 =====
+USER: Расскажи в двух предложениях, зачем нужны базы данных.
+RAW:
+Базы данных нужны для эффективного хранения, управления и обработки большого количества данных, обеспечивая доступ к этим данным для различных пользователей и приложений. Они позволяют организовать данные в удобную структуру, что упрощает поиск и обновление информации.
+
+TOOL_CALL: None
+TOOL_RESULT: None
+FINAL:
+Базы данных нужны для эффективного хранения, управления и обработки большого количества данных, обеспечивая доступ к этим данным для различных пользователей и приложений. Они позволяют организовать данные в удобную структуру, что упрощает поиск и обновление информации.
+
+END=2026-09-29T10:47:15.030480
